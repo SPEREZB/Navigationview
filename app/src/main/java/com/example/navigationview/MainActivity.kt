@@ -1,4 +1,4 @@
-package com.example.navigationview_dinamico
+package com.example.navigationview
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

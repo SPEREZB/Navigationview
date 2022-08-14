@@ -1,4 +1,4 @@
-package com.example.navigationview_dinamico
+package com.example.navigationview
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +16,7 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
+
 
 class MainActivity2 : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
     var drawerLayout: DrawerLayout? = null
@@ -35,15 +36,15 @@ class MainActivity2 : AppCompatActivity(),NavigationView.OnNavigationItemSelecte
 
         //header
         nV = findViewById(R.id.nav_view)
-        var tipo_cuenta="";
         var header = nV.getHeaderView(0);
+        var imagen=header.findViewById<CircleImageView>(R.id.ic_cuenta)
+        var nombre=header.findViewById<TextView>(R.id.nombre);
         var header_fondo=header.findViewById<ImageView>(R.id.fondo_header);
-        header_fondo.setImageResource(R.drawable.fheader)
+
 
         //datos
         var menu=nV.getMenu();
-        var imagen=header.findViewById<CircleImageView>(R.id.ic_cuenta)
-        var nombre=header.findViewById<TextView>(R.id.nombre);
+        var tipo_cuenta="";
         var ingreso=false;
 
         //volley
@@ -68,11 +69,14 @@ class MainActivity2 : AppCompatActivity(),NavigationView.OnNavigationItemSelecte
                         ingreso=true;
                         if(bundle?.getString("user")=="admin"){
                             tipo_cuenta="datos_admin"
+                            header_fondo.setImageResource(R.drawable.fheader)
                         }else if(bundle?.getString("user")=="client"){
                             tipo_cuenta="datos_client"
+                            header_fondo.setImageResource(R.drawable.fheader2)
                         }
-                        //SE MODIFICARA las OPOCIONES DEL MENU DEPENDIENDO CON
+                        //SE MODIFICARA LOS ITEMS DEL MENU DEPENDIENDO CON
                         //LA CUENTA QUE HAYA INGRESADO
+
                         val jsonObjectRequest = JsonObjectRequest(
                             Request.Method.GET, urldatos, null,
                             { response ->
@@ -112,6 +116,18 @@ class MainActivity2 : AppCompatActivity(),NavigationView.OnNavigationItemSelecte
                 startActivity(intent);
             }
         }
+        if (fragment != null) {
+            getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, fragment)
+                .commit()
+
+            item.setChecked(true)
+            getSupportActionBar()?.setTitle(item.getTitle());
+        }
+
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

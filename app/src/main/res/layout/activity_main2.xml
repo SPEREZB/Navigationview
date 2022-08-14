@@ -15,15 +15,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:orientation="vertical">
+
         <FrameLayout
-            android:id="@+id/content_frame"
+            android:id="@+id/frame_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:background="#F8F8F8">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
+                android:background="@color/white"
                 android:elevation="4dp"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
@@ -36,9 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:backgroundTint="#000000"
         android:fitsSystemWindows="true"
-        android:background="#117DAE"
-        android:textColorHighlight="#BF1919"
-        app:headerLayout="@layout/cabecera"/>
+        app:itemTextColor="#FFFFFF"
+        app:headerLayout="@layout/cabecera" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

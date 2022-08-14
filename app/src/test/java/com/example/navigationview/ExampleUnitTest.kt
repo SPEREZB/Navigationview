@@ -1,4 +1,4 @@
-package com.example.navigationview_dinamico
+package com.example.navigationview
 
 import org.junit.Test
 

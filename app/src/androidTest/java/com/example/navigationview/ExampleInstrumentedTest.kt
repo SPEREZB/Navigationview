@@ -1,4 +1,4 @@
-package com.example.navigationview_dinamico
+package com.example.navigationview
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.navigationview_dinamico", appContext.packageName)
+        assertEquals("com.example.navigationview", appContext.packageName)
     }
 }
